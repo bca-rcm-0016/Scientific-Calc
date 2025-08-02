@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flower Themed Scientific Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(#ffe4ec, #ffdee9);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background: #fff0f5;
+      padding: 25px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
+      max-width: 360px;
+      width: 100%;
+    }
+
+    .calculator h2 {
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 10px;
+      font-family: 'Cursive', sans-serif;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      height: 60px;
+      font-size: 1.5rem;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      text-align: right;
+      box-shadow: inset 0 0 5px #ffc0cb;
+      background: #fffafc;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      height: 50px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #f8d7da;
+      color: #6c2c74;
+      box-shadow: 0 3px 5px rgba(220, 20, 60, 0.1);
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #ffc0cb;
+    }
+
+    .flower {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="flower">🌸</div>
+    <h2>Floral Calculator</h2>
+    <input type="text" id="display" readonly />
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="backspace()">←</button>
+      <button onclick="insert('π')">π</button>
+      <button onclick="insert('(')">(</button>
+      <button onclick="insert(')')">)</button>
+
+      <button onclick="insert('7')">7</button>
+      <button onclick="insert('8')">8</button>
+      <button onclick="insert('9')">9</button>
+      <button onclick="insert('/')">÷</button>
+      <button onclick="insert('Math.sqrt(')">√</button>
+
+      <button onclick="insert('4')">4</button>
+      <button onclick="insert('5')">5</button>
+      <button onclick="insert('6')">6</button>
+      <button onclick="insert('*')">×</button>
+      <button onclick="insert('Math.pow(')">^</button>
+
+      <button onclick="insert('1')">1</button>
+      <button onclick="insert('2')">2</button>
+      <button onclick="insert('3')">3</button>
+      <button onclick="insert('-')">−</button>
+      <button onclick="insert('Math.log10(')">log</button>
+
+      <button onclick="insert('0')">0</button>
+      <button onclick="insert('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="insert('+')">+</button>
+      <button onclick="insert('Math.sin(')">sin</button>
+
+      <button onclick="insert('Math.cos(')">cos</button>
+      <button onclick="insert('Math.tan(')">tan</button>
+      <button onclick="insert('Math.exp(')">eˣ</button>
+      <button onclick="insert('Math.E')">e</button>
+      <button onclick="insert('Math.PI')">π</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function insert(value) {
+      display.value += value;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function backspace() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (err) {
+        display.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
